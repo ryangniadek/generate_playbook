@@ -1,0 +1,10 @@
+---
+- name: Wrapper playbook for {{ filename }}
+  hosts: all
+  become: true # TODO: evaluate whether script needs to be run as root
+  gather_facts: false # TODO: delete this line once we implement this with Ansible
+
+  tasks:
+    - name: Copy over script and run it
+      ansible.builtin.script:
+        cmd: python3 {{ filename }}

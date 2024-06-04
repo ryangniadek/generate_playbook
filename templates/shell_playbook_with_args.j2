@@ -7,4 +7,4 @@
   tasks:
     - name: Copy over script and run it with script_args as extra arguments
       ansible.builtin.script:
-        cmd: "{{ filename }} {% raw %}{{ script_args }}{% endraw %}"
+        cmd: {{ filename }} {% raw %}{{ script_args }}{% endraw %}

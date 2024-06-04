@@ -38,7 +38,9 @@ for filename in os.listdir(directory_path):
             elif filename.endswith(".sh"):
                 playbook_template = j2.get_template("shell_playbook.j2")
                 shell_no_args += 1
-            # # TODO: Add support for Python scripts with args
+            elif ('optparse' in script_contents or 'argparse' in script_contents or 'argv' in script_contents) and filename.endswith(".py"):
+                playbook_template = j2.get_template('python_playbook_with_args.j2')
+                python_args += 1
             elif filename.endswith(".py"):
                 playbook_template = j2.get_template("python_playbook.j2")
                 python_no_args += 1

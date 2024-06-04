@@ -5,7 +5,7 @@
   gather_facts: false # TODO: delete this line once we implement this with Ansible
 
   tasks:
-    - name: Copy over script and run it
+    - name: Copy over script and run it with script_args as extra arguments
       ansible.builtin.script:
-        cmd: {{ filename }}
+        cmd: {{ filename }} {% raw %}{{ script_args }}{% endraw %}
         executable: python3
